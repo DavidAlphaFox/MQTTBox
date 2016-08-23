@@ -1,55 +1,35 @@
 {
   "name": "MQTTBox",
-  "version": "0.1.0",
-  "description": "MQTTBox - Developers helper program to create and test MQTT connectivity protocol.",
+  "version": "0.1.1",
+  "description": "MQTTBox - Developers helper program to create and test MQTT connectivity protocol",
   "repository": {
     "type": "git",
-    "url": "git@github.com:workswithweb/MQTTBox.git"
+    "url": "https://github.com/workswithweb/MQTTBox.git"
   },
   "scripts": {
-    "start": "gulp",
-    "lint": "eslint src && echo \"eslint: no lint errors\""
+    "start": "gulp"
   },
   "private": true,
   "devDependencies": {
-    "babel-core": "6.13.2",
-    "babel-eslint": "6.1.2",
-    "babel-preset-es2015": "6.13.2",
-    "babel-preset-react": "6.11.1",
-    "babelify": "7.3.0",
-    "browser-sync": "2.14.0",
-    "browserify": "13.1.0",
-    "eslint": "3.3.1",
-    "gulp": "3.9.1",
-    "gulp-notify": "2.2.0",
-    "gulp-util": "3.0.7",
-    "pretty-hrtime": "1.0.2",
-    "require-dir": "0.3.0",
-    "underscore": "1.8.3",
-    "vinyl-source-stream": "1.1.0",
-    "watchify": "3.7.0"
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.11.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-util": "^3.0.1",
+    "pretty-hrtime": "^1.0.1",
+    "require-dir": "^0.3.0",
+    "underscore": "^1.8.3",
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^3.6.1"
   },
   "dependencies": {
     "material-ui": "0.15.4",
-    "react": "15.3.0",
-    "react-dom": "15.3.0",
-    "react-tap-event-plugin": "1.0.0",
-    "node-uuid":"1.4.7",
-    "flux":"2.1.1",
-    "q":"1.4.1",
-    "localforage": "1.4.2",
-    "lodash": "4.15.0",
-    "react-grid-layout": "0.13.1",
-    "qlobber":"0.7.0",
-    "react-copy-to-clipboard": "4.2.3",
-    "react-router": "2.6.1",
-    "mqtt": "1.14.0",
-    "chrome-net": "3.3.0",
-    "moment":"2.14.1",
-    "jquery":"3.1.0",
-    "datatables.net":"1.10.12",
-    "datatables.net-dt":"1.10.12",
-    "d3": "3.5.5",
-    "electron":"1.3.3"
+    "react": "15.3.1",
+    "react-dom": "15.3.1",
+    "react-tap-event-plugin": "1.0.0"
   }
 }
