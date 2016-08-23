@@ -1,0 +1,11 @@
+class CommonConstants {}
+
+//ACTIONS
+CommonConstants.ACTION_OPEN_CLOSE_APP_LEFT_DRAWER = 'ACTION_OPEN_CLOSE_APP_LEFT_DRAWER';
+
+
+//EVENTS
+CommonConstants.EVENT_OPEN_CLOSE_APP_LEFT_DRAWER = 'EVENT_OPEN_CLOSE_APP_LEFT_DRAWER';
+
+
+export default CommonConstants;
