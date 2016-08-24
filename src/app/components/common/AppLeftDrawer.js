@@ -6,7 +6,12 @@ import {blue500, red500, green500} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
 import ActionClear from 'material-ui/svg-icons/content/clear';
 import Divider from 'material-ui/Divider';
+import {List, ListItem} from 'material-ui/List';
+import DevicesIcon from 'material-ui/svg-icons/hardware/developer-board';
+import FlashIcon from 'material-ui/svg-icons/image/flash-on';
+import InfoIcon from 'material-ui/svg-icons/action/info';
 
+import NavLink from './NavLink';
 import CommonEventEmitter from '../../dispatcher/CommonEventEmitter';
 import CommonConstants from '../../utils/CommonConstants';
 
@@ -57,6 +62,26 @@ export default class AppLeftDrawer extends React.Component {
               </ToolbarGroup>
           </Toolbar>
           <Divider/>
+          <List>
+            <ListItem
+                primaryText="MQTT Clients"
+                leftIcon={<DevicesIcon/>}
+                onClick={this.showHideAppLeftMenu.bind(this,false)}
+                containerElement={<NavLink to="/mqttclientsDashboard"/>}
+            />
+            <ListItem
+                primaryText="MQTT Load"
+                leftIcon={<FlashIcon/>}
+                onClick={this.showHideAppLeftMenu.bind(this,false)}
+                containerElement={<NavLink to="/mqttclientsDashboard"/>}
+            />
+            <ListItem
+                primaryText="About"
+                leftIcon={<InfoIcon/>}
+                onClick={this.showHideAppLeftMenu.bind(this,false)}
+                containerElement={<NavLink to="/mqttclientsDashboard"/>}
+            />
+          </List>
         </Drawer>
     );
   }
