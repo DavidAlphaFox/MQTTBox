@@ -64,19 +64,19 @@ export default class AppLeftDrawer extends React.Component {
           <Divider/>
           <List>
             <ListItem
-                primaryText="MQTT Clients"
+                primaryText="MQTT CLIENTS"
                 leftIcon={<DevicesIcon/>}
                 onClick={this.showHideAppLeftMenu.bind(this,false)}
                 containerElement={<NavLink to="/mqttclientsDashboard"/>}
             />
             <ListItem
-                primaryText="MQTT Load"
+                primaryText="MQTT LOAD"
                 leftIcon={<FlashIcon/>}
                 onClick={this.showHideAppLeftMenu.bind(this,false)}
                 containerElement={<NavLink to="/mqttclientsDashboard"/>}
             />
             <ListItem
-                primaryText="About"
+                primaryText="ABOUT"
                 leftIcon={<InfoIcon/>}
                 onClick={this.showHideAppLeftMenu.bind(this,false)}
                 containerElement={<NavLink to="/mqttclientsDashboard"/>}
