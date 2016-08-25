@@ -21,6 +21,9 @@ class CommonEventEmitter extends Events.EventEmitter {
                 case CommonConstants.ACTION_OPEN_CLOSE_APP_LEFT_DRAWER:
                     this.showHideAppDrawer(action.data);
                     break;
+                case CommonConstants.ACTION_SHOW_MESSAGE_TO_USER:
+                    this.emitChange(CommonConstants.EVENT_SHOW_MESSAGE_TO_USER,action.data);
+                    break;
                 default:
             }
         }.bind(this));

@@ -4,6 +4,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import AppLeftDrawer from './common/AppLeftDrawer';
+import UserMessageSnackbar from './common/UserMessageSnackbar';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -22,6 +23,7 @@ class Main extends Component {
         <div>
           <AppLeftDrawer/>
           {this.props.children}
+          <UserMessageSnackbar/>
         </div>
       </MuiThemeProvider>
     );

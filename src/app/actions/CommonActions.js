@@ -10,6 +10,13 @@ class CommonActions {  
         }); 
     }
 
+    static showMessageToUser(data) { 
+        AppDispatcher.dispatch({ 
+            actionType: CommonConstants.ACTION_SHOW_MESSAGE_TO_USER, 
+            data: data 
+        }); 
+    }
+
 }
 
 export default CommonActions;

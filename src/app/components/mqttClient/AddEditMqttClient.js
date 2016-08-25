@@ -15,6 +15,7 @@ import UUID from 'node-uuid';
 
 import LeftMenuButton from '../common/LeftMenuButton';
 import MqttClientSettings from '../../models/MqttClientSettings';
+import CommonActions from '../../actions/CommonActions';
 
 const cols = {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1};
 const totalFormFields = 21;
@@ -35,6 +36,8 @@ export default class AddEditMqttClient extends React.Component {
         this.onProtocolValueChange = this.onProtocolValueChange.bind(this);
         this.onCheckBoxValueChange = this.onCheckBoxValueChange.bind(this);
         this.onWillQosValueChange = this.onWillQosValueChange.bind(this);
+
+        this.saveMqttClientSettings = this.saveMqttClientSettings.bind(this);
 
         this.initBrokerObj(this.props.params);
     }
@@ -77,6 +80,32 @@ export default class AddEditMqttClient extends React.Component {
 
     onWillQosValueChange(event, index, value) {
         this.setState({willQos:value});
+    }
+
+    saveMqttClientSettings() {
+        if(this.state!=null) {
+            if(this.state.mqttClientName==null||this.state.mqttClientName.trim().length<1||this.state.mqttClientName.trim().length>500) {
+                CommonActions.showMessageToUser({message:'Please enter valid MQTT client name'});
+            } else if(this.state.mqttClientId==null||this.state.mqttClientId.trim().length<1||this.state.mqttClientId.trim().length>500) {
+                CommonActions.showMessageToUser({message:'Please enter valid client id'});
+            } else if(this.state.host==null||this.state.host.trim().length<1||this.state.host.trim().length>10000) {
+                CommonActions.showMessageToUser({message:'Please enter valid host'});
+            } else if(this.state.reconnectPeriod==null|| Number.isNaN(this.state.reconnectPeriod) || this.state.reconnectPeriod<=0) {
+                CommonActions.showMessageToUser({message:'Please enter valid reconnect period'});
+            } else if(this.state.connectTimeout==null|| Number.isNaN(this.state.connectTimeout) || this.state.connectTimeout<=0) {
+                CommonActions.showMessageToUser({message:'Please enter valid connect timeout'});
+            } else if(this.state.keepalive==null|| Number.isNaN(this.state.keepalive) || this.state.keepalive<0) {
+                CommonActions.showMessageToUser({message:'Please enter valid keep alive'});
+            } else if(this.state.willTopic!=null && this.state.willTopic.trim().length>0 &&
+            (this.state.willTopic.indexOf('#') > -1 || this.state.willTopic.indexOf('+') > -1)) {
+                CommonActions.showMessageToUser({message:'Please enter valid "will topic". Should not contain + or #'});
+            } else {
+                CommonActions.showMessageToUser({message:'Saved'});
+                //CommonActions.saveBrokerSettings(this.state);
+            }
+        } else {
+            CommonActions.showMessageToUser({message:'Please Enter Valid MQTT Client Settings'});
+        }
     }
 
     getLayoutsFromGrid() {
@@ -177,7 +206,7 @@ export default class AddEditMqttClient extends React.Component {
                             <TextField name="willPayload" onChange={this.onTargetValueChange} value={this.state.willPayload} multiLine={true} rows={1}  hintText='Will - Payload' floatingLabelText='Will - Payload' floatingLabelFixed={true}/>
                         </div>
                         <div style={styles.checkbox} key={"field_20"}>
-                            <RaisedButton label='Save' primary={true}/>
+                            <RaisedButton onTouchTap={this.saveMqttClientSettings} label='Save' primary={true}/>
                         </div>
                         <div style={styles.checkbox} key={"field_21"}>
                             <RaisedButton label='Delete' secondary={true}/>
