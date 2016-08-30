@@ -26,6 +26,10 @@ module.exports = {
       entries: src + '/app/app.js',
       dest: dest,
       outputName: 'app.js'
+    },{
+      entries: src + '/app/workers/MqttClientDbWorker.js',
+      dest: dest+'/workers',
+      outputName: 'MqttClientDbWorker.js'
     }],
     extensions: ['.js'],
   }

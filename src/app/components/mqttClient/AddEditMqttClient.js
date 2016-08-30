@@ -12,10 +12,14 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import UUID from 'node-uuid';
+import {hashHistory} from 'react-router'
 
 import LeftMenuButton from '../common/LeftMenuButton';
 import MqttClientSettings from '../../models/MqttClientSettings';
 import CommonActions from '../../actions/CommonActions';
+import MqttClientActions from '../../actions/MqttClientActions';
+import MqttClientService from '../../services/MqttClientService';
+import MqttClientConstants from '../../utils/MqttClientConstants';
 
 const cols = {lg: 3, md: 3, sm: 2, xs: 1, xxs: 1};
 const totalFormFields = 21;
@@ -100,8 +104,7 @@ export default class AddEditMqttClient extends React.Component {
             (this.state.willTopic.indexOf('#') > -1 || this.state.willTopic.indexOf('+') > -1)) {
                 CommonActions.showMessageToUser({message:'Please enter valid "will topic". Should not contain + or #'});
             } else {
-                CommonActions.showMessageToUser({message:'Saved'});
-                //CommonActions.saveBrokerSettings(this.state);
+                MqttClientActions.saveMqttClientSettings(this.state);
             }
         } else {
             CommonActions.showMessageToUser({message:'Please Enter Valid MQTT Client Settings'});
@@ -120,6 +123,18 @@ export default class AddEditMqttClient extends React.Component {
             layouts[key] = layout;
         }
         return layouts;
+    }
+
+    gotoMqttClientPage() {
+        hashHistory.replace('/mqttclientsDashboard');
+    }
+
+    componentDidMount() {
+        MqttClientService.addChangeListener(MqttClientConstants.EVENT_MQTT_CLIENT_DATA_CHANGED,this.gotoMqttClientPage);
+    }
+
+    componentWillUnmount() {
+        MqttClientService.removeChangeListener(MqttClientConstants.EVENT_MQTT_CLIENT_DATA_CHANGED,this.gotoMqttClientPage);
     }
 
     render() {
